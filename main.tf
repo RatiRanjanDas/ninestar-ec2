@@ -10,3 +10,8 @@ resource "aws_instance" "Tiff2pdf-AMI-Inst-test" {
     Name = "Tiff2pdf-AMI-Inst-testInstance"
   }
 }
+resource "aws_volume_attachment" "ebs_att" {
+  device_name = "/dev/sda"
+  volume_id   = aws_ebs_volume.ebsvol.id
+  instance_id = aws_instance.Tiff2pdf-AMI-Inst-test.id
+}
